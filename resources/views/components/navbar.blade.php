@@ -1,30 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">MyApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+<nav class="bg-purple shadow">
+    <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-20">
+        <div class="flex items-center justify-between h-20">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-20">
+            </a>
+            <div class="flex space-x-4">
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                            @csrf
-                            <button class="btn nav-link border-0 bg-transparent" type="submit">Logout</button>
-                        </form>
-                    </li>
+                    <a href="{{ route('profile') }}" class="text-gold text-lg hover:underline">Profile</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="text-gold text-lg hover:underline">Logout</button>
+                    </form>
                 @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
-                    </li>
+                    <a href="{{ route('login') }}" class="text-gold text-lg">Sign In</a>
+                    <a href="{{ route('register') }}" class="text-gold text-lg ">Register</a>
                 @endauth
-            </ul>
+            </div>
         </div>
     </div>
 </nav>

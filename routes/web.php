@@ -7,6 +7,19 @@ Route::get('/', function () {
     return view('layouts.index');
 });
 
+Route::get('/products', function () {
+    return view('layouts.products');
+});
+
+Route::get('/products', function () {
+    return view('layouts.products');
+});
+
+
+Route::get('/products', function () {
+    return view('layouts.products');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

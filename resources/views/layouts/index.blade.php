@@ -7,6 +7,7 @@
 </head>
 <body>
     @include('components.navbar')
+    @include('components.footer')
 
     <main class="container mt-4">
         @yield('content')

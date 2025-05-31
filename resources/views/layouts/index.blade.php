@@ -7,10 +7,14 @@
 </head>
 <body>
     @include('components.navbar')
-    @include('components.footer')
 
     <main class="container mt-4">
-        @yield('content')
+        @yield('content')  {{-- ✅ This yields page-specific content --}}
+    </main>
+
+    @include('components.footer') 
+    <main class="container mt-4">
+        @yield('content')  {{-- ✅ This yields page-specific content --}}
     </main>
 </body>
 </html>

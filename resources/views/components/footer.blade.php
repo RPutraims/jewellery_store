@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="mt-8 text-center text-sm text-gold/80">
-            &copy; {{ date('Y') }} Your Company. All rights reserved.
+            &copy; {{ date('Y') }} Ralfs Putraims un Kārlis Brahmanis
         </div>
     </div>
 </footer>

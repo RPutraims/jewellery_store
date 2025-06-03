@@ -12,6 +12,18 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table = 'user';
+
+    public function isAdmin() {
+        return $this->role === 'admin';
+    }
+    public function isEmployee() {
+        return $this->role === 'employee';
+    }
+    public function isRegularUser() {
+        return $this->role === 'user';
+    }
+
     /**
      * The attributes that are mass assignable.
      *

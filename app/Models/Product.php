@@ -5,14 +5,16 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Product extends Model
 {
+    protected $table = 'product';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'category_id',
         'name',
         'description',
         'price',
@@ -20,8 +22,6 @@ class User extends Authenticatable
         'photo'
     ];
 
-
-    // In app/Models/Product.php
     public function category()
     {
         return $this->belongsTo(Category::class);

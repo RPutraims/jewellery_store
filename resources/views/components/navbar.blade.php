@@ -15,7 +15,15 @@
                         @mouseleave="timer = setTimeout(() => open = false, 300)" 
                         class="relative"
                     >
-                        <button class="text-gold text-lg">Products</button>
+                        <form method="GET" action="{{ route('products.index') }}">
+                            <button 
+                                type="submit"
+                                class="text-gold text-lg"
+                                @click="open = false"
+                            >
+                                Products
+                            </button>
+                        </form>
 
                         <div 
                             x-show="open" 
@@ -69,7 +77,10 @@
 
                 {{-- Auth Links --}}
                 @auth
-                    <a href="{{ route('profile') }}" class="text-gold text-lg hover:underline">Profile</a>
+                    @can('create', App\Models\Product::class)
+                    <a class="nav-link" href="{{ route('products.create') }}">Create Listing</a>
+                    @endcan
+                    <a href="{{ route('profile.edit') }}" class="text-gold text-lg hover:underline">Profile</a>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
                         <button class="text-gold text-lg hover:underline">Logout</button>

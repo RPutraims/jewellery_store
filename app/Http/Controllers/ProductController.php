@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Material;
+use App\Models\Size;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,8 @@ class ProductController extends Controller
 
     public function index(){
         $products = Product::get();
+        $materials = Material::get();
+        $size = Size::get();
         return view('products.index', compact('products'));
     }
 
@@ -58,6 +62,13 @@ class ProductController extends Controller
         ]);
 
         return redirect()->route('products.index')->with('success', 'Product created successfully!');
+    }
+
+    public function show($id)
+    {
+        $product = Product::with(['category', 'material', 'size'])->findOrFail($id);
+        
+        return view('products.show', compact('product'));
     }
 
 

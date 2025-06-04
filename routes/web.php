@@ -18,6 +18,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Cart routes
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::put('/cart/{cartKey}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{cartKey}', [CartController::class, 'remove'])->name('cart.remove');
+Route::delete('/cart', [CartController::class, 'clear'])->name('cart.clear');
+Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count');//category/{categoryId}', [ProductController::class, 'byCategory'])->name('products.by-category');
+
 Route::get('/products/category/{id}', [ProductController::class, 'byCategory'])->name('products.byCategory');
 
 Route::resource('products', ProductController::class);

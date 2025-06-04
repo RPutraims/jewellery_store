@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 
 class Product extends Model
 {
@@ -25,6 +26,16 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function material()
+    {
+        return $this->hasMany(Material::class); // or hasMany(), if there can be multiple
+    }
+
+    public function size()
+    {
+        return $this->hasMany(Size::class); // or hasMany(), if there can be multiple
     }
 
 }

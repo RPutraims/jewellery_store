@@ -14,6 +14,6 @@
             @endforeach
         </div>
     @else
-        <div class="alert alert-info">No job products available.</div>
+        <div class="alert alert-info">No products available.</div>
     @endif
 </x-layout>

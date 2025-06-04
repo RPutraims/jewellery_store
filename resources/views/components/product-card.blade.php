@@ -1,6 +1,6 @@
 <div class="card mb-3 shadow-sm"> 
     <div class="card-body"> 
-        <img src="{{ $product->photo }}" alt="{{ $product->name }}" class="card-img-top mb-3" style="height: 350px; object-fit: cover;">
+        <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="card-img-top mb-3" style="height: 350px; object-fit: cover;">
         <h5 class="card-title">{{ $product->name }}</h5> 
         <h6 class="card-subtitle mb-2 text-muted">{{ $product->category->name }}</h6> 
         <p class="card-text">{{ $product->description }}</p> 

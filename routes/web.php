@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/env-test', function () {
+    return env('APP_KEY');
+});
+
 Route::get('/', function () {
     return view('layouts.index');
 });

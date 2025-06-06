@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Material;
+use App\Models\ProductMaterial;
 use App\Models\Product;
 
 class ProductMaterial extends Model
@@ -22,12 +22,12 @@ class ProductMaterial extends Model
 
     public function material()
     {
-        return $this->belongsTo(Material::class);
+        return $this->belongsToMany(Material::class);
     }
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 
 }

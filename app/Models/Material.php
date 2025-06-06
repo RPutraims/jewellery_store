@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ProductMaterial;
+
 class Material extends Model
 {
     protected $table = 'material';
@@ -17,4 +19,10 @@ class Material extends Model
         'material_description',
         'price_increment'
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'productmaterial', 'material_id', 'product_id');
+    }
+
 }

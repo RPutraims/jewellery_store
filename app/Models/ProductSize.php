@@ -22,11 +22,11 @@ class ProductSize extends Model
 
     public function size()
     {
-        return $this->belongsTo(Size::class);
+        return $this->belongsToMany(Size::class);
     }
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }

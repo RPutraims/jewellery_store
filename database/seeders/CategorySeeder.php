@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
     {
         DB::table('category')->insert([
             [
-                'category_name' => "Men's Necklaces",
+                'category_name' => "Men's Chains",
                 'category_description' => 'Stylish and masculine necklaces designed for men.',
             ],
             [

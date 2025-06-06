@@ -28,14 +28,14 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function material()
+    public function productmaterial()
     {
-        return $this->hasMany(Material::class); // or hasMany(), if there can be multiple
+        return $this->hasMany(ProductMaterial::class); // or hasMany(), if there can be multiple
     }
 
-    public function size()
+    public function productsize()
     {
-        return $this->hasMany(Size::class); // or hasMany(), if there can be multiple
+        return $this->hasMany(ProductSize::class); // or hasMany(), if there can be multiple
     }
 
 }

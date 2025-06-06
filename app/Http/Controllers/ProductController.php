@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductMaterial;
+use App\Models\ProductSize;
 use App\Models\Material;
 use App\Models\Size;
 use App\Models\Category;
@@ -32,7 +34,17 @@ class ProductController extends Controller
 
 
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        $productsizes = ProductSize::all();
+        $productmaterials = ProductMaterial::all();
+        $materials = Material::get();
+        $sizes = Size::get();
+        return view('products.create', [
+            'categories' => $categories,
+            'productsizes' => $productsizes,
+            'materials' => $materials,
+            'sizes' => $sizes,
+            'productmaterials' => $productmaterials
+        ]);
     }
 
     public function store(Request $request){
@@ -47,12 +59,16 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
             'photo' => 'required|image|mimes:webp|max:2048',
+            'material_ids' => 'required|array|min:1',
+            'material_ids.*' => 'exists:material,id',
+            'size_ids' => 'required|array|min:1',
+            'size_ids.*' => 'exists:size,id',
         ]);
 
         // Handle file upload
         $photoPath = $request->file('photo')->store('products', 'public');
 
-        Product::create([
+        $product = Product::create([
             'category_id' => $validatedData['category_id'],
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
@@ -60,6 +76,22 @@ class ProductController extends Controller
             'sale_price' => $validatedData['sale_price'] ?? null,
             'photo' => $photoPath,
         ]);
+
+
+        foreach ($validatedData['material_ids'] as $materialId) {
+            ProductMaterial::create([
+                'product_id' => $product->id,
+                'material_id' => $materialId,
+            ]);
+        }
+
+        // Attach sizes
+        foreach ($validatedData['size_ids'] as $sizeId) {
+            ProductSize::create([
+                'product_id' => $product->id,
+                'size_id' => $sizeId,
+            ]);
+        }
 
         return redirect()->route('products.index')->with('success', 'Product created successfully!');
     }

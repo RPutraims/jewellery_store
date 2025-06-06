@@ -143,6 +143,84 @@
                                     style="max-width: 200px; display: none;">
                             </div>
 
+                            <!-- Available Materials -->
+                            <div class="mb-3">
+                                <label class="form-label">Available Materials <span class="text-danger">*</span></label>
+
+                                <div class="container-fluid px-0">
+                                    <div class="row">
+                                        @foreach($materials as $index => $material)
+                                            <div class="col-md-4">
+                                                <div class="form-check mb-2">
+                                                    <input
+                                                        class="form-check-input @error('material_ids') is-invalid @enderror"
+                                                        type="checkbox"
+                                                        name="material_ids[]"
+                                                        id="material_{{ $material->id }}"
+                                                        value="{{ $material->id }}"
+                                                        data-price="{{ $material->price_increment }}"
+                                                        {{ is_array(old('material_ids')) && in_array($material->id, old('material_ids')) ? 'checked' : '' }}
+                                                    >
+                                                    <label class="form-check-label" for="material_{{ $material->id }}">
+                                                        {{ $material->material_name }}
+                                                        @if($material->price_increment > 0)
+                                                            (+${{ number_format($material->price_increment, 2) }})
+                                                        @endif
+                                                        <small class="text-muted d-block">{{ $material->material_description }}</small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                @error('material_ids')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                                @error('material_ids.*')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+
+                            <!-- Available Sizes -->
+                            <div class="mb-3">
+                                <label class="form-label">Available Sizes <span class="text-danger">*</span></label>
+
+                                <div class="container-fluid px-0">
+                                    <div class="row">
+                                        @foreach($sizes as $index => $size)
+                                            <div class="col-md-4">
+                                                <div class="form-check mb-2">
+                                                    <input
+                                                        class="form-check-input @error('size_ids') is-invalid @enderror"
+                                                        type="checkbox"
+                                                        name="size_ids[]"
+                                                        id="size_{{ $size->id }}"
+                                                        value="{{ $size->id }}"
+                                                        data-price="{{ $size->price_increment }}"
+                                                        {{ is_array(old('size_ids')) && in_array($size->id, old('size_ids')) ? 'checked' : '' }}
+                                                    >
+                                                    <label class="form-check-label" for="size_{{ $size->id }}">
+                                                        {{ $size->size_value }}
+                                                        @if($size->price_increment > 0)
+                                                            (+${{ number_format($size->price_increment, 2) }})
+                                                        @endif
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                @error('material_ids')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                                @error('material_ids.*')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <!-- Submit Buttons -->
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('products.index') }}" class="btn btn-secondary">

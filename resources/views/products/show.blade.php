@@ -15,7 +15,7 @@
             <!-- Product Image -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 @if($product->photo)
-                    <img src="{{ $product->photo_url }}" alt="{{ $product->name }}" 
+                    <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" 
                         class="w-full h-96 object-cover">
                 @else
                     <div class="w-full h-96 bg-gray-200 flex items-center justify-center">
@@ -68,15 +68,15 @@
                                     <label class="relative">
                                         <input type="radio" name="material_id" value="{{ $material->id }}" 
                                             class="sr-only peer material-option"
-                                            data-price-adjustment="{{ $material->pivot->price_adjustment + $material->price_modifier }}"
+                                            data-price-adjustment="{{ $material->pivot->price_increment + $material->price_increment }}"
                                             required>
                                         <div class="border-2 border-gray-200 rounded-lg p-3 cursor-pointer 
                                                 peer-checked:border-blue-500 peer-checked:bg-blue-50 
                                                 hover:border-gray-300 transition-colors">
-                                            <div class="font-medium">{{ $material->name }}</div>
-                                            @if($material->pivot->price_adjustment + $material->price_modifier > 0)
+                                            <div class="font-medium">{{ $material->material_name }}</div>
+                                            @if($material->pivot->price_increment + $material->price_increment > 0)
                                                 <div class="text-sm text-green-600">
-                                                    +${{ number_format($material->pivot->price_adjustment + $material->price_modifier, 2) }}
+                                                    +${{ number_format($material->pivot->price_increment + $material->price_increment, 2) }}
                                                 </div>
                                             @endif
                                         </div>
@@ -89,26 +89,23 @@
                         </div>
                     @endif
 
-                    <!-- Size Selection -->
                     @if($product->sizes->count() > 0)
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Size <span class="text-red-500">*</span>
                             </label>
-                            <div class="grid grid-cols-4 gap-2">
-                                @foreach($product->sizes as $size)
-                                    <label class="relative">
-                                        <input type="radio" name="size_id" value="{{ $size->id }}" 
-                                            class="sr-only peer size-option"
-                                            data-price-adjustment="{{ $size->pivot->price_adjustment + $size->price_modifier }}"
-                                            required>
-                                        <div class="border-2 border-gray-200 rounded-lg p-3 cursor-pointer text-center
-                                                peer-checked:border-blue-500 peer-checked:bg-blue-50 
-                                                hover:border-gray-300 transition-colors">
-                                            <div class="font-medium">{{ $size->name }}</div>
-                                            @if($size->pivot->price_adjustment + $size->price_modifier > 0)
-                                                <div class="text-xs text-green-600">
-                                                    +${{ number_format($size->pivot->price_adjustment + $size->price_modifier, 2) }}
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                                @foreach($product->sizes->sortBy('size') as $size)
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="size_id" value="{{ $size->id }}"
+                                            class="sr-only peer" required>
+                                        
+                                        <div class="p-3 rounded-md border-2 border-gray-300 text-center transition-all
+                                                    peer-checked:border-blue-600 peer-checked:bg-blue-100 peer-checked:font-bold">
+                                            <div>{{ $size->size_value }}</div>
+                                            @if($size->pivot->price_increment > 0)
+                                                <div class="text-xs text-green-600 mt-1">
+                                                    +${{ number_format($size->pivot->price_increment, 2) }}
                                                 </div>
                                             @endif
                                         </div>
@@ -120,6 +117,9 @@
                             @enderror
                         </div>
                     @endif
+
+
+
 
                     <!-- Quantity -->
                     <div class="mb-6">

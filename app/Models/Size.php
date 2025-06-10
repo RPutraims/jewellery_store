@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
+use App\Models\ProductSize;
 
 class Size extends Model
 {
@@ -15,14 +15,12 @@ class Size extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id',
         'size_value',
         'price_increment'
     ];
 
-    public function product()
+    public function productsize()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(ProductSize::class); // or hasMany(), if there can be multiple
     }
-
 }

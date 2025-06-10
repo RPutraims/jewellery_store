@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('size', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('product')->onDelete('cascade');
             $table->string('size_value');
             $table->decimal('price_increment', 8, 2)->default(0);
-            $table->unique(['product_id', 'size_value']);
+            $table->unique(['size_value']);
             $table->timestamps();
         });
     }

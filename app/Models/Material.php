@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
+use App\Models\ProductMaterial;
 
 class Material extends Model
 {
@@ -15,15 +15,14 @@ class Material extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id',
         'material_name',
         'material_description',
         'price_increment'
     ];
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class, 'productmaterial', 'material_id', 'product_id');
     }
 
 }

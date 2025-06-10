@@ -100,8 +100,9 @@
                                         <input type="radio" name="size_id" value="{{ $size->id }}"
                                             class="sr-only peer" required>
                                         
-                                        <div class="p-3 rounded-md border-2 border-gray-300 text-center transition-all
-                                                    peer-checked:border-blue-600 peer-checked:bg-blue-100 peer-checked:font-bold">
+                                        <div class="border-2 border-gray-200 rounded-lg p-3 cursor-pointer 
+                                                peer-checked:border-blue-500 peer-checked:bg-blue-50 
+                                                hover:border-gray-300 transition-colors">
                                             <div>{{ $size->size_value }}</div>
                                             @if($size->pivot->price_increment > 0)
                                                 <div class="text-xs text-green-600 mt-1">

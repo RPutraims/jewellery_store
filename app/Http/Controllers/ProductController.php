@@ -49,7 +49,7 @@ class ProductController extends Controller
 
     public function store(Request $request){
         if($request->user()->cannot('create', Product::class)){
-            abort(403, 'You are not authorized to create job listings.');
+            abort(403, 'You are not authorized to create product listings.');
         }
 
         $validatedData = $request->validate([

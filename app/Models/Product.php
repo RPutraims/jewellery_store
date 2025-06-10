@@ -42,4 +42,25 @@ class Product extends Model
         return $this->belongsToMany(Size::class, 'productsize', 'product_id', 'size_id');
     }
 
+    public function getFinalPrice(?int $materialId = null, ?int $sizeId = null): float
+    {
+        
+        $finalPrice = (float) $this->price;
+  
+        if ($materialId) {
+            $material = $this->materials->find($materialId); 
+            if ($material && isset($material->price_increment)) {
+                $finalPrice += (float) $material->price_increment;
+            }
+        }
+        
+        if ($sizeId) {
+            $size = $this->sizes->find($sizeId); 
+            if ($size && isset($size->price_increment)) {
+                $finalPrice += (float) $size->price_increment;
+            }
+        }
+
+        return $finalPrice;
+    }
 }

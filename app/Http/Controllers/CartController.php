@@ -22,7 +22,7 @@ class CartController extends Controller
         $cart = $this->cartService->get();
         $totals = $this->cartService->getTotals();
 
-        return view('cart.index', compact('cart', 'totals'));
+        return view('products.cart', compact('cart', 'totals'));
     }
 
     /**
@@ -31,9 +31,9 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $validated = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'material_id' => 'nullable|exists:materials,id',
-            'size_id' => 'nullable|exists:sizes,id',
+            'product_id' => 'required|exists:product,id',
+            'material_id' => 'nullable|exists:material,id',
+            'size_id' => 'nullable|exists:size,id',
             'quantity' => 'required|integer|min:1|max:99',
         ]);
 
@@ -47,7 +47,8 @@ class CartController extends Controller
 
             return back()->with('success', 'Product added to cart successfully!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Failed to add product to cart. Please try again.');
+            dd($e->getMessage(), $e->getFile(), $e->getLine());
+            //return back()->with('error', 'Failed to add product to cart. Please try again.');
         }
     }
 

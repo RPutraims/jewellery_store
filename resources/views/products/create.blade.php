@@ -4,7 +4,6 @@
     </x-slot>
 
     <h1>Create A New Product</h1>
-
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

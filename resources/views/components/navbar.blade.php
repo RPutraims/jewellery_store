@@ -85,6 +85,9 @@
                         @csrf
                         <button class="text-gold text-lg hover:underline">Logout</button>
                     </form>
+                    <a href="{{ route('cart.index') }}" class="flex items-center space-x-1">
+                    <img src="{{ asset('images/shopping-cart-icon.webp') }}" alt="Shopping Cart" class="h-6 w-10"> 
+                    </a>
                 @else
                     <a href="{{ route('login') }}" class="text-gold text-lg">Sign In</a>
                     <a href="{{ route('register') }}" class="text-gold text-lg">Register</a>

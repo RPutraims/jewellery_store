@@ -33,7 +33,7 @@
                                     <!-- Product Image -->
                                     <div class="flex-shrink-0">
                                         @if($item['product_photo'])
-                                            <img src="{{ $item['product_photo'] }}" 
+                                            <img src="{{ asset('storage/' . $item['product_photo']) }}" 
                                                 alt="{{ $item['product_name'] }}"
                                                 class="w-20 h-20 object-cover rounded-lg">
                                         @else
@@ -69,7 +69,7 @@
                                             <button type="submit" 
                                                     class="w-8 h-8 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition-colors"
                                                     {{ $item['quantity'] <= 1 ? 'disabled' : '' }}>
-                                                <i class="fas fa-minus text-xs"></i>
+                                                <span class="fas fa-minus inline-block w-4 h-4 text-xs"></span>
                                             </button>
                                         </form>
                                         
@@ -81,7 +81,7 @@
                                             <input type="hidden" name="quantity" value="{{ $item['quantity'] + 1 }}">
                                             <button type="submit" 
                                                     class="w-8 h-8 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition-colors">
-                                                <i class="fas fa-plus text-xs"></i>
+                                                <span class="fas fa-plus inline-block w-4 h-4 text-xs"></span>
                                             </button>
                                         </form>
                                     </div>

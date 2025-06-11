@@ -42,6 +42,11 @@ class Product extends Model
         return $this->belongsToMany(Size::class, 'productsize', 'product_id', 'size_id');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function getFinalPrice(?int $materialId = null, ?int $sizeId = null): float
     {
         

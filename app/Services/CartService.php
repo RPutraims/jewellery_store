@@ -39,7 +39,7 @@ class CartService
                 'id' => $cartKey,
                 'product_id' => $productId,
                 'product_name' => $product->name,
-                'product_photo' => $product->photo_url,
+                'product_photo' => $product->photo,
                 'material_id' => $materialId,
                 'material_name' => $material ? $material->name : null,
                 'size_id' => $sizeId,

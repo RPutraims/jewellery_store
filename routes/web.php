@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReviewController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/env-test', function () {
@@ -21,6 +23,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Review routes 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/products/{product}/reviews', [ReviewController::class, 'byProduct'])->name('reviews.byProduct');
+    Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
 // Cart routes

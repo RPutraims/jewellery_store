@@ -19,7 +19,7 @@
                 <ul class="space-y-1">
                     <li><a href="/" class="hover:underline">Home</a></li>
                     <li><a href="/services" class="hover:underline">Services</a></li>
-                    <li><a href="/projects" class="hover:underline">Projects</a></li>
+                    <li><a href="{{ route('reviews.index') }}" class="hover:underline">Reviews</a></li>
                 </ul>
             </div>
 

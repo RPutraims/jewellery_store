@@ -1,0 +1,29 @@
+Stop MySQL/XAMPP (make sure it's not running)
+
+Rename your broken system database folder:
+
+bash
+Copy
+Edit
+C:\Users\karbr\Web\mysql\data\mysql
+→ rename to
+C:\Users\karbr\Web\mysql\data\mysql_broken
+Copy the default backup:
+
+Find:
+C:\Users\karbr\Web\mysql\backup\mysql
+Copy it into:
+C:\Users\karbr\Web\mysql\data\
+So you now have:
+C:\Users\karbr\Web\mysql\data\mysql
+Start XAMPP again and launch MySQL
+
+✅ If successful:
+
+MySQL will start
+
+root user will be reset with no password
+
+You can now access phpMyAdmin
+
+Other databases (data\your_db_name) will remain intact

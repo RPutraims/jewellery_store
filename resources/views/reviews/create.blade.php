@@ -1,9 +1,8 @@
 <x-layout>
-    <x-slot name="title">
-        Create new review
+    <x-slot name="header">
+        <h2 class="text-3xl font-bold text-white">Create a new review!</h2>
     </x-slot>
 
-    <h1>Add a review!</h1>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -68,13 +67,11 @@
 
                             <!-- Comment -->
                             <div class="mb-3">
-                                <label for="review_text" class="form-label">Comment </label>
+                                <label for="review_text" class="form-label">Comment</label>
                                 <textarea class="form-control @error('review_text') is-invalid @enderror" 
                                         id="review_text" 
                                         name="review_text" 
-                                        rows="4" 
-                                        required 
-                                        minlength="10">{{ old('review_text') }}</textarea>
+                                        rows="4">{{ old('review_text') }}</textarea>
                             </div>
 
                             <!-- Photo Upload -->

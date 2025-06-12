@@ -1,6 +1,6 @@
 <x-layout>
-    <x-slot name="title">
-        Product Page
+    <x-slot name="header">
+        <h2 class="text-3xl font-bold text-white">Product page</h2>
     </x-slot>
 
     <div class="container mx-auto px-4 py-8">

@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
     Route::get('/products/{product}/reviews', [ReviewController::class, 'byProduct'])->name('reviews.byProduct');
+    Route::get('/reviews/filter', [ReviewController::class, 'byFilter'])->name('reviews.byFilter');
     Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');

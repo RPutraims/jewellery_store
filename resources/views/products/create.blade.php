@@ -1,9 +1,8 @@
 <x-layout>
-    <x-slot name="title">
-        Create New Product
+    <x-slot name="header">
+        <h2 class="text-3xl font-bold text-white">Create a new product!</h2>
     </x-slot>
 
-    <h1>Create A New Product</h1>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

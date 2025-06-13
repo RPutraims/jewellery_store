@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">Shopping cart</h2>
+        <h2 class="text-3xl font-bold text-white">{{ __('Shopping cart') }}</h2>
     </x-slot>
 
         @if(session('success'))
@@ -12,11 +12,11 @@
         @if(empty($cart))
             <div class="text-center py-16">
                 <i class="fas fa-shopping-cart text-gray-400 text-6xl mb-4"></i>
-                <h2 class="text-2xl font-semibold text-gray-600 mb-4">Your cart is empty</h2>
-                <p class="text-gray-500 mb-8">Add some beautiful jewelry to get started!</p>
+                <h2 class="text-2xl font-semibold text-gray-600 mb-4">{{ __('Your cart is empty') }}</h2>
+                <p class="text-gray-500 mb-8">{{ __('Add some beautiful jewelry to get started!') }}</p>
                 <a href="{{ route('products.index') }}" 
                 class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                    Continue Shopping
+                    {{ __('Continue Shopping') }}
                 </a>
             </div>
         @else
@@ -45,11 +45,11 @@
                                         <h3 class="text-lg font-semibold text-gray-900">{{ $item['product_name'] }}</h3>
                                         
                                         @if($item['material_name'])
-                                            <p class="text-sm text-gray-600">Material: {{ $item['material_name'] }}</p>
+                                            <p class="text-sm text-gray-600">{{ __('Material:') }} {{ $item['material_name'] }}</p>
                                         @endif
                                         
                                         @if($item['size_name'])
-                                            <p class="text-sm text-gray-600">Size: {{ $item['size_name'] }}</p>
+                                            <p class="text-sm text-gray-600">{{ __('Size:') }} {{ $item['size_name'] }}</p>
                                         @endif
                                         
                                         <p class="text-lg font-semibold text-gray-900 mt-2">
@@ -93,7 +93,7 @@
                                             @method('DELETE')
                                             <button type="submit" 
                                                     class="text-red-600 hover:text-red-800 transition-colors text-sm">
-                                                <i class="fas fa-trash mr-1"></i> Remove
+                                                <i class="fas fa-trash mr-1"></i> {{ __('Remove') }}
                                             </button>
                                         </form>
                                     </div>
@@ -106,7 +106,7 @@
                     <div class="mt-6">
                         <a href="{{ route('products.index') }}" 
                         class="text-blue-600 hover:text-blue-800 font-medium">
-                            <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
+                            <i class="fas fa-arrow-left mr-2"></i> {{ __('Continue Shopping') }}
                         </a>
                     </div>
                 </div>
@@ -114,29 +114,29 @@
                 <!-- Cart Summary -->
                 <div class="lg:col-span-1">
                     <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Order Summary</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">{{ __('Order Summary') }}</h2>
                         
                         <div class="space-y-3">
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Subtotal ({{ $totals['item_count'] }} items)</span>
+                                <span class="text-gray-600">{{ __('Subtotal') }} ({{ $totals['item_count'] }} items)</span>
                                 <span class="font-medium">${{ number_format($totals['subtotal'], 2) }}</span>
                             </div>
                             
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Tax</span>
+                                <span class="text-gray-600">{{ __('Tax') }}</span>
                                 <span class="font-medium">${{ number_format($totals['tax'], 2) }}</span>
                             </div>
                             
                             <div class="border-t pt-3">
                                 <div class="flex justify-between text-lg font-semibold">
-                                    <span>Total</span>
+                                    <span>{{ __('Total') }}</span>
                                     <span>${{ number_format($totals['total'], 2) }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium mt-6 hover:bg-blue-700 transition-colors">
-                            Proceed to Checkout
+                            {{ __('Proceed to Checkout') }}
                         </button>
 
                         <form action="{{ route('cart.clear') }}" method="POST" class="mt-4">
@@ -145,7 +145,7 @@
                             <button type="submit" 
                                     class="w-full bg-gray-200 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-300 transition-colors"
                                     onclick="return confirm('Are you sure you want to clear your cart?')">
-                                Clear Cart
+                                {{ __('Clear Cart') }}
                             </button>
                         </form>
                     </div>

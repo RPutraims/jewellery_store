@@ -21,7 +21,7 @@
 
                                 <div class="col-md-6">
                                     <select id="category_id" class="form-control @error('category_id') is-invalid @enderror" name="category_id" required>
-                                        <option value="">Select Category</option>
+                                        <option value="">{{ __('Select Category') }}</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}
@@ -84,7 +84,7 @@
 
                                 <div class="col-md-6">
                                     <input id="sale_price" type="number" step="0.01" class="form-control @error('sale_price') is-invalid @enderror" name="sale_price" value="{{ old('sale_price', $product->sale_price) }}">
-                                    <small class="form-text text-muted">Optional: Leave empty if no sale price</small>
+                                    <small class="form-text text-muted">{{ __('Optional: Leave empty if no sale price') }}</small>
 
                                     @error('sale_price')
                                         <span class="invalid-feedback" role="alert">
@@ -101,12 +101,12 @@
                                     @if($product->photo)
                                         <div class="mb-2">
                                             <img src="{{ Storage::url($product->photo) }}" alt="Current photo" class="img-thumbnail" style="max-width: 200px;">
-                                            <p class="text-muted mt-1">Current photo</p>
+                                            <p class="text-muted mt-1">{{ __('Current photo') }}</p>
                                         </div>
                                     @endif
                                     
                                     <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" accept="image/webp">
-                                    <small class="form-text text-muted">Leave empty to keep current photo. Only .webp files allowed, max 2MB</small>
+                                    <small class="form-text text-muted">{{ __('Leave empty to keep current photo. Only .webp files allowed, max 2MB') }}</small>
 
                                     @error('photo')
                                         <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <small class="form-text text-muted">Select at least one material</small>
+                                    <small class="form-text text-muted">{{ __('Select at least one material') }}</small>
 
                                     @error('material_ids')
                                         <span class="invalid-feedback" role="alert">
@@ -164,7 +164,7 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <small class="form-text text-muted">Select at least one size</small>
+                                    <small class="form-text text-muted">{{ __('Select at least one size') }}</small>
 
                                     @error('size_ids')
                                         <span class="invalid-feedback" role="alert">

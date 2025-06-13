@@ -12,14 +12,14 @@
     <div>
         @auth
             <a href="{{ route('profile.edit') }}" class="block py-2 px-4 text-gold hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                <i class="fa-solid fa-user mr-2"></i> User Profile
+                <i class="fa-solid fa-user mr-2"></i> {{ __('User Profile') }}
             </a>
         @else
             <a href="{{ route('login') }}" class="block py-2 px-4 text-gold hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In
+                <i class="fa-solid fa-right-to-bracket mr-2"></i> {{ __('Sign In') }}
             </a>
             <a href="{{ route('register') }}" class="block py-2 px-4 text-gold hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                <i class="fa-solid fa-user-plus mr-2"></i> Register
+                <i class="fa-solid fa-user-plus mr-2"></i> {{ __('Register') }}
             </a>
         @endauth
     </div>
@@ -30,7 +30,7 @@
         <form action="{{ route('logout') }}" method="POST" class="inline-block w-full">
             @csrf
             <button type="submit" class="w-full text-left py-2 px-4 text-gold hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                <i class="fa-solid fa-right-from-bracket mr-2"></i> {{ __('Logout') }}
             </button>
         </form>
     @endauth
@@ -41,7 +41,7 @@
     <div x-data="{ open: false }">
         <button @click="open = !open"
                 class="w-full text-left py-2 px-4 text-gold text-lg hover:bg-gold hover:text-purple rounded-md transition duration-200">
-            <i class="fa-solid fa-gem mr-2"></i> Products
+            <i class="fa-solid fa-gem mr-2"></i> {{ __('Products') }}
         </button>
 
         
@@ -49,9 +49,9 @@
         <div x-show="open" x-transition class="mt-2 pl-4 space-y-1">
             <a href="{{ route('products.index', ['sort' => 'product_rating']) }}"
                class="block px-2 py-1 text-sm hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                All Products
+                {{ __('All Products') }}
             </a>
-            <h4 class="font-semibold text-sm text-gold">Men's</h4>
+            <h4 class="font-semibold text-sm text-gold">{{ __('Men\'s') }}</h4>
             @foreach ($categories as $category)
                 @php $name = Str::lower($category->category_name); @endphp
                 @if(Str::contains($name, 'men') && !Str::contains($name, 'women'))
@@ -62,7 +62,7 @@
                 @endif
             @endforeach
 
-            <h4 class="font-semibold text-sm mt-3 text-gold">Women's</h4>
+            <h4 class="font-semibold text-sm mt-3 text-gold">{{ __('Women\'s') }}</h4>
             @foreach ($categories as $category)
                 @php $name = Str::lower($category->category_name); @endphp
                 @if(Str::contains($name, 'women'))
@@ -81,18 +81,18 @@
     <div x-data="{ open: false }">
         <button @click="open = !open"
                 class="w-full text-left py-2 px-4 text-gold text-lg hover:bg-gold hover:text-purple rounded-md transition duration-200">
-            <i class="fa-solid fa-star mr-2"></i> Reviews
+            <i class="fa-solid fa-star mr-2"></i> {{ __('Reviews') }}
         </button>
 
         <div x-show="open" x-transition class="mt-2 pl-4 space-y-1">
             <a href="{{ route('reviews.index', ['sort' => 'product_rating']) }}"
                class="block px-2 py-1 text-sm hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                All reviews
+                {{ __('All reviews') }}
             </a>
             @auth
                 <a href="{{ route('reviews.create') }}"
                    class="block px-2 py-1 text-sm hover:bg-gold hover:text-purple rounded-md transition duration-200">
-                    Create New Review
+                    {{ __('Create New Review') }}
                 </a>
             @endauth
         </div>
@@ -103,7 +103,7 @@
     <!-- Shopping Cart -->
     <a href="{{ route('cart.index') }}"
        class="block py-2 px-4 text-gold hover:bg-gold hover:text-purple rounded-md transition duration-200">
-        <i class="fa-solid fa-cart-shopping mr-2"></i> Shopping Cart
+        <i class="fa-solid fa-cart-shopping mr-2"></i> {{ __('Shopping Cart') }}
     </a>
 
     <!-- Create Listing -->
@@ -111,7 +111,7 @@
         @can('create', App\Models\Product::class)
             <a class="block py-2 px-4 text-gold hover:bg-gold hover:text-purple rounded-md transition duration-200"
                href="{{ route('products.create') }}">
-                <i class="fa-solid fa-plus-circle mr-2"></i> Create Listing
+                <i class="fa-solid fa-plus-circle mr-2"></i> {{ __('Create Listing') }}
             </a>
         @endcan
     @endauth

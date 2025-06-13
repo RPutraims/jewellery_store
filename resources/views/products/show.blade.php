@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">Product page</h2>
+        <h2 class="text-3xl font-bold text-white">{{ __('Product page') }}</h2>
     </x-slot>
 
     <div class="container mx-auto px-4 py-8">
@@ -27,7 +27,7 @@
             <!-- Product Details -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 <nav class="text-sm mb-4">
-                    <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">Home</a>
+                    <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">{{ __('Home') }}</a>
                     <span class="mx-2">/</span>
                     <span class="text-gray-500">{{ $product->name }}</span>
                 </nav>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-2">Description</h3>
+                    <h3 class="text-lg font-semibold mb-2">{{ __('Description') }}</h3>
                     <p class="text-gray-600">{{ $product->description }}</p>
                 </div>
                 <!-- Add to Cart Form -->
@@ -61,7 +61,7 @@
                     @if($product->materials->count() > 0)
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Material <span class="text-red-500">*</span>
+                                {{ __('Material') }} <span class="text-red-500">*</span>
                             </label>
                             <div class="grid grid-cols-2 gap-2">
                                 @foreach($product->materials as $material)
@@ -92,7 +92,7 @@
                     @if($product->sizes->count() > 0)
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Size <span class="text-red-500">*</span>
+                                {{ __('Size') }} <span class="text-red-500">*</span>
                             </label>
                             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                                 @foreach($product->sizes->sortBy('size') as $size)
@@ -124,7 +124,7 @@
 
                     <!-- Quantity -->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('Quantity') }}</label>
                         <select name="quantity" class="border border-gray-300 rounded-lg px-3 py-2 w-20">
                             @for($i = 1; $i <= 10; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
@@ -144,7 +144,7 @@
                                 class="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium 
                                     hover:bg-blue-700 transition-colors flex items-center justify-center">
                             <i class="fas fa-shopping-cart mr-2"></i>
-                            Add to Cart
+                            {{ __('Add to Cart') }}
                         </button>
                         
                         <button type="button" 
@@ -161,22 +161,22 @@
                         <div class="flex items-center">
                             <i class="fas fa-shipping-fast text-blue-600 mr-3"></i>
                             <div>
-                                <div class="font-medium">Free Shipping</div>
-                                <div class="text-sm text-gray-500">On orders over $100</div>
+                                <div class="font-medium">{{ __('Free Shipping') }}</div>
+                                <div class="text-sm text-gray-500">{{ __('On orders over $100') }}</div>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-undo text-blue-600 mr-3"></i>
                             <div>
-                                <div class="font-medium">30-Day Returns</div>
-                                <div class="text-sm text-gray-500">Easy returns policy</div>
+                                <div class="font-medium">{{ __('30-Day Returns') }}</div>
+                                <div class="text-sm text-gray-500">{{ __('Easy returns policy') }}</div>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-certificate text-blue-600 mr-3"></i>
                             <div>
-                                <div class="font-medium">Authentic</div>
-                                <div class="text-sm text-gray-500">100% genuine products</div>
+                                <div class="font-medium">{{ __('Authentic') }}</div>
+                                <div class="text-sm text-gray-500">{{ __('100% genuine products') }}</div>
                             </div>
                         </div>
                     </div>

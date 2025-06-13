@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">Create a new review!</h2>
+        <h2 class="text-3xl font-bold text-white">{{ __('Create a new review!') }}</h2>
     </x-slot>
 
     @if(session('success'))
@@ -27,16 +27,16 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Leave a review :D</h4>
+                            <h4>{{ __('Leave a review :D') }}</h4>
                         </div>
                         <div class="card-body">
                             
                             <!-- Product Selection -->
                             <div class="mb-3">
-                                <label for="product_id" class="form-label text-gray-700">Select product to leave review for <span class="text-danger">*</span></label>
+                                <label for="product_id" class="form-label text-gray-700">{{ __('Select product to leave review for') }} <span class="text-danger">*</span></label>
                                 <select class="form-select @error('product_id') is-invalid @enderror rounded-md focus:ring-blue-500 focus:border-blue-500"
                                         id="product_id" name="product_id" required>
-                                    <option value="">Select a product</option>
+                                    <option value="">{{ __('Select a product') }}</option>
                                     @foreach($product as $product)
                                         <option value="{{ $product->id }}"
                                                 {{ old('product_id') == $product->id ? 'selected' : '' }}>
@@ -67,7 +67,7 @@
 
                             <!-- Comment -->
                             <div class="mb-3">
-                                <label for="review_text" class="form-label">Comment</label>
+                                <label for="review_text" class="form-label">{{ __('Comment') }}</label>
                                 <textarea class="form-control @error('review_text') is-invalid @enderror" 
                                         id="review_text" 
                                         name="review_text" 
@@ -76,13 +76,13 @@
 
                             <!-- Photo Upload -->
                             <div class="mb-3">
-                                <label for="photo" class="form-label">Product Photo</label>
+                                <label for="photo" class="form-label">{{ __('Product Photo') }}</label>
                                 <input type="file" 
                                     class="form-control @error('photo') is-invalid @enderror" 
                                     id="photo" 
                                     name="photo" 
                                     accept=".webp">
-                                <div class="form-text">Only WebP format allowed. Maximum file size: 2MB</div>
+                                <div class="form-text">{{ __('Only WebP format allowed. Maximum file size: 2MB') }}</div>
 
                                 @error('photo')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -92,7 +92,7 @@
 
                             <!-- Rating -->
                             <div class="mb-3">
-                                <label class="form-label d-block">Rating <span class="text-danger">*</span></label>
+                                <label class="form-label d-block">{{ __('Rating') }} <span class="text-danger">*</span></label>
                                 <div class="@error('rating') is-invalid @enderror d-flex gap-3">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <div class="form-check form-check-inline">
@@ -134,14 +134,14 @@
                             <!-- Submit Buttons -->
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('reviews.index') }}" class="btn btn-secondary">
-                                    <i class="fas fa-arrow-left"></i> Back to Reviews
+                                    <i class="fas fa-arrow-left"></i> {{ __('Back to Reviews') }}
                                 </a>
                                 <div>
                                     <button type="reset" class="btn btn-outline-secondary me-2">
-                                        <i class="fas fa-undo"></i> Reset
+                                        <i class="fas fa-undo"></i> {{ __('Reset') }}
                                     </button>
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-save"></i> Submit review
+                                        <i class="fas fa-save"></i> {{ __('Submit review') }}
                                     </button>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">Reviews</h2>
+        <h2 class="text-3xl font-bold text-white">{{ __('Reviews') }}</h2>
     </x-slot>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -11,7 +11,7 @@
             class="btn btn-outline-primary"
             type="button"
         >
-            Filter
+            {{ __('Filter') }}
         </button>
 
         <!-- Dropdown Form -->
@@ -24,19 +24,19 @@
             <form method="GET" action="{{ route('reviews.byFilter') }}" class="space-y-4">
                 <!-- Sort -->
                 <div>
-                    <label for="sort" class="form-label">Sort by</label>
+                    <label for="sort" class="form-label">{{ __('Sort by') }}</label>
                     <select name="sort" id="sort" class="form-select w-full">
-                        <option value="">-- Select --</option>
-                        <option value="date_asc" {{ request('sort') == 'date_asc' ? 'selected' : '' }}>Date (Oldest First)</option>
-                        <option value="date_desc" {{ request('sort') == 'date_desc' ? 'selected' : '' }}>Date (Newest First)</option>
-                        <option value="rating_asc" {{ request('sort') == 'rating_asc' ? 'selected' : '' }}>Rating (Low to High)</option>
-                        <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}>Rating (High to Low)</option>
+                        <option value="">-- {{ __('Select') }} --</option>
+                        <option value="date_asc" {{ request('sort') == 'date_asc' ? 'selected' : '' }}>{{ __('Date (Oldest First)') }}</option>
+                        <option value="date_desc" {{ request('sort') == 'date_desc' ? 'selected' : '' }}>{{ __('Date (Newest First)') }}</option>
+                        <option value="rating_asc" {{ request('sort') == 'rating_asc' ? 'selected' : '' }}>{{ __('Rating (Low to High)') }}</option>
+                        <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}>{{ __('Rating (High to Low)') }}</option>
                     </select>
                 </div>
 
                 <!-- Product Filter -->
                 <div>
-                    <label class="form-label">Filter by Products</label>
+                    <label class="form-label">{{ __('Filter by Products') }}</label>
                     <div class="border p-2 rounded overflow-y-auto" style="max-height: 150px;">
                         @foreach ($products as $product)
                             <div class="form-check">
@@ -55,7 +55,7 @@
 
                 <!-- Submit -->
                 <div>
-                    <button type="submit" class="btn btn-primary w-full">Apply Filters</button>
+                    <button type="submit" class="btn btn-primary w-full">{{ __('Apply Filters') }}</button>
                 </div>
             </form>
         </div>
@@ -72,6 +72,6 @@
             @endforeach
         </div>
     @else
-        <div class="alert alert-info">No reviews yet, be the first!</div>
+        <div class="alert alert-info">{{ __('No reviews yet, be the first!') }}</div>
     @endif
 </x-layout>

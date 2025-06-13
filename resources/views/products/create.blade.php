@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">Create a new product!</h2>
+        <h2 class="text-3xl font-bold text-white">{{ __('Create a new product!') }}</h2>
     </x-slot>
 
     @if(session('success'))
@@ -27,16 +27,16 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Create New Product</h4>
+                            <h4>{{ __('Create New Product') }}</h4>
                         </div>
                         <div class="card-body">
                             
                             <!-- Category Selection -->
                             <div class="mb-3">
-                                <label for="category_id" class="form-label">Category <span class="text-danger">*</span></label>
+                                <label for="category_id" class="form-label">{{ __('Category') }} <span class="text-danger">*</span></label>
                                 <select class="form-select @error('category_id') is-invalid @enderror" 
                                         id="category_id" name="category_id" required>
-                                    <option value="">Select a category</option>
+                                    <option value="">{{ __('Select a category') }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" 
                                                 {{ old('category_id') == $category->id ? 'selected' : '' }}>
@@ -51,7 +51,7 @@
 
                             <!-- Product Name -->
                             <div class="mb-3">
-                                <label for="name" class="form-label">Product Name <span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">{{ __('Product Name') }} <span class="text-danger">*</span></label>
                                 <input type="text" 
                                     class="form-control @error('name') is-invalid @enderror" 
                                     id="name" 
@@ -66,14 +66,14 @@
 
                             <!-- Description -->
                             <div class="mb-3">
-                                <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
+                                <label for="description" class="form-label">{{ __('Description') }} <span class="text-danger">*</span></label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" 
                                         id="description" 
                                         name="description" 
                                         rows="4" 
                                         required 
                                         minlength="10">{{ old('description') }}</textarea>
-                                <div class="form-text">Minimum 10 characters required</div>
+                                <div class="form-text">{{ __('Minimum 10 characters required') }}</div>
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -81,7 +81,7 @@
 
                             <!-- Price -->
                             <div class="mb-3">
-                                <label for="price" class="form-label">Price <span class="text-danger">*</span></label>
+                                <label for="price" class="form-label">{{ __('Price') }} <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
                                     <input type="number" 
@@ -100,7 +100,7 @@
 
                             <!-- Sale Price (Optional) -->
                             <div class="mb-3">
-                                <label for="sale_price" class="form-label">Sale Price (Optional)</label>
+                                <label for="sale_price" class="form-label">{{ __('Sale Price (Optional)') }}</label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
                                     <input type="number" 
@@ -111,7 +111,7 @@
                                         step="0.01" 
                                         min="0">
                                 </div>
-                                <div class="form-text">Leave empty if not on sale</div>
+                                <div class="form-text">{{ __('Leave empty if not on sale') }}</div>
                                 @error('sale_price')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -119,14 +119,14 @@
 
                             <!-- Photo Upload -->
                             <div class="mb-3">
-                                <label for="photo" class="form-label">Product Photo <span class="text-danger">*</span></label>
+                                <label for="photo" class="form-label">{{ __('Product Photo') }} <span class="text-danger">*</span></label>
                                 <input type="file" 
                                     class="form-control @error('photo') is-invalid @enderror" 
                                     id="photo" 
                                     name="photo" 
                                     accept=".webp" 
                                     required>
-                                <div class="form-text">Only WebP format allowed. Maximum file size: 2MB</div>
+                                <div class="form-text">{{ __('Only WebP format allowed. Maximum file size: 2MB') }}</div>
                                 @error('photo')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -143,7 +143,7 @@
 
                             <!-- Available Materials -->
                             <div class="mb-3">
-                                <label class="form-label">Available Materials <span class="text-danger">*</span></label>
+                                <label class="form-label">{{ __('Available Materials') }} <span class="text-danger">*</span></label>
 
                                 <div class="container-fluid px-0">
                                     <div class="row">
@@ -183,7 +183,7 @@
 
                             <!-- Available Sizes -->
                             <div class="mb-3">
-                                <label class="form-label">Available Sizes <span class="text-danger">*</span></label>
+                                <label class="form-label">{{ __('Available Sizes') }} <span class="text-danger">*</span></label>
 
                                 <div class="container-fluid px-0">
                                     <div class="row">
@@ -222,14 +222,14 @@
                             <!-- Submit Buttons -->
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('products.index') }}" class="btn btn-secondary">
-                                    <i class="fas fa-arrow-left"></i> Back to Products
+                                    <i class="fas fa-arrow-left"></i> {{ __('Back to Products') }}
                                 </a>
                                 <div>
                                     <button type="reset" class="btn btn-outline-secondary me-2">
-                                        <i class="fas fa-undo"></i> Reset
+                                        <i class="fas fa-undo"></i> {{ __('Reset') }}
                                     </button>
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-save"></i> Create Product
+                                        <i class="fas fa-save"></i> {{ __('Create Product') }}
                                     </button>
                                 </div>
                             </div>

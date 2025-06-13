@@ -16,7 +16,7 @@
             @endforeach
         </div>
     @else
-        <div class="alert alert-info">No products available.</div>
+        <div class="alert alert-info">{{ __('No products available.') }}</div>
     @endif
 
 </x-layout>

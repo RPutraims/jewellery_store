@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "jewellery-auth",
+  "private_key_id": "acd4165f4628b8f4a4450b42b9dbc18f1a4c7941",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCrLRycCA4Lptfs\n6KNXUannE4FAI6XiMqKnwnf5+KaDSNeE5B8TUZU9l20T/144GeQoIa/d91nodMDY\nVgfvJMb5zv+BGgYmMJVZPJ4NRSIuOaPtnD1AR+/WCBMWm8NG6tKo8vfpnBHiyXG4\nYDLORlAJDAZ2pJSIcV7GXA8lWiR5bstjIxXj2oHCf8P2Ws9Jq/moeDDdaKUIdHlJ\nBpwBjJ88M40QJqOtCUdL1WFpZqIP7XFKFwTMSMNu4M9lcOjxE0WI3fVbnFlpwMXy\nibkDJYoDKvVJnzqWBLyDQYrMQ9KdkGuV5NO62iZVyRcyxXUg8beZc7g7VKJH7S5f\n//tUmpWlAgMBAAECggEABpyDMJ6aBkavK9IPbwGzNX7aHONTlqE8iYy4DBJXwhXX\n5yTVc25Q/JRC7QUNu056srccXw8c7J7HzQNDoq+xtLfTRAYAi0yQlCYEd8A+Efl9\ndKG2dutgXsyoihTBjdVnhgl+XEpAIZmEuCmVBMUP9c1+WWpBZ2Szk6c+GYP6CSuX\nU5bl6n7JpKU4FL83sRIlkTFFrfGOl0X9QNzxD/pHpS9M7iwnpXTj23OuPmYUyO8m\nSouVwWQGnIyM58GQyqhUk1jxh7nU4vIEqgNqItWGx6IKApBhx+px6BbmjUKhAPy3\no2vNNaGpYuPdWBD01IBnWld2xdQnWV1kUQhX8rolMQKBgQDn4NfGFWOm7BRTUZlf\nNsfQdrnKbnzjDDoHVYH3XB+hjylItlNk7nTNWBvSqA5N6gXeXQ95nhXYOAjbisMi\nGrhjujE9Dcr/IR5E5HfSCf7AOdvSgOWoWWMJuLb2Q1uHvpxClucEyPJ+RNEodIt3\nsI0flE0F1qNgGTM4e1CKbIYMNQKBgQC8+7XVHUD18uDJA7EixuD2D6bmJV8MkJYf\nPLIJDpKGcL5NZ799ypYQFC+DRLAFKNGhRHlQ+rE8uNzPyyhMQ3Fi8JQbEjzMT8ZF\nFAdraSSaL5NjWU83o731Yrg6jugdMkRsinBBb/vU0ErDsQXw2hTc61rSHtCkqWE4\nhi7ZS/4xsQKBgFLI/YBlBo0D4EXW7jEGN9R/btmNFN1i8hzINHyB0XE20YB6R8/T\nKrRdbqGJCoJauPmos+uxuw7VAqSPKBe2/nnsccPgdscbpdjm0LiWhPNQNOE0z8mJ\nEEjaP8gwSC9wqA1GHvigXaMjIqGU6m4zBE9v/QfGl9GpbZYOwLSLBli5AoGAZhXq\nsYat8q4Ss0NlSo34M7NcyvHhGF56WcFlwvK2QB1jD1k93euziFf/Gn/ePctBAkaE\n6jOhzlVmInFyAVBlTbb7qmv9n7hwOByLrYAMn6WXjpFN85ZmJMoBDtDnne3rfF6E\nKTUe6mTiHjfgJ60GnBge5WZz+p7sv6XsZMFiPOECgYAN3Un9W298bia0sIjyvmlo\nwoH4EmJaUQNAlJYBTXAbv0mLbiW99GGQH3HgFq7KnrMOqQ/M0KKXdEbtjwuNLq7v\nVxCwqg3LlmDFysdNCvMNQ/u0+3PcENXZr/IYSS1CozBU/0pSg7NoGRX+yuQ0YDAz\nFkItPzCLgfyIknRy695V4Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "jewellery-store-translate@jewellery-auth.iam.gserviceaccount.com",
+  "client_id": "112523748899950987278",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jewellery-store-translate%40jewellery-auth.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -38,6 +38,8 @@ class CartController extends Controller
             'quantity' => 'required|integer|min:1|max:99',
         ]);
 
+        
+
         try {
             $cartItem = $this->cartService->add(
                 $validated['product_id'],
@@ -46,7 +48,11 @@ class CartController extends Controller
                 $validated['quantity']
             );
 
-            return back()->with('success', 'Product added to cart successfully!');
+            if ($request->has('redirect_to_cart')) {
+                return redirect()->route('cart.index');
+            } else {
+                return back()->with('success', 'Product added to cart successfully!');
+            }
         } catch (\Exception $e) {
             dd($e->getMessage(), $e->getFile(), $e->getLine());
             //return back()->with('error', 'Failed to add product to cart. Please try again.');
@@ -73,6 +79,20 @@ class CartController extends Controller
         }
 
         return back()->with('success', 'Cart updated successfully!');
+    }
+
+    /**
+     * Buy now redirect
+     */
+    public function show(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        if ($request->query('action') === 'buy') {
+            return redirect()->route('cart.index');
+        }
+
+        return view('products.show', compact('product'));
     }
 
     /**

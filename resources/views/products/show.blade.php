@@ -134,6 +134,12 @@
 
                     <!-- Add to Cart Button -->
                     <div class="flex space-x-4">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        
+                        @if(request('action') === 'buy')
+                            <input type="hidden" name="redirect_to_cart" value="1"> 
+                        @endif
                         <button type="submit" 
                                 class="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium 
                                     hover:bg-blue-700 transition-colors flex items-center justify-center">

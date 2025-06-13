@@ -16,7 +16,7 @@
             <li><strong>Category:</strong> {{ $product->category->name }}</li> 
             <li><strong>Added:</strong> {{ $product->created_at?->format('Y-m-d') }}</li> 
         </ul> 
-        <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Add To Cart</a>
-        <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Buy Now</a> 
+        <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary">Add To Cart</a>
+        <a href="{{ route('products.show', ['product' => $product->id, 'action' => 'buy']) }}" class="btn btn-primary">Buy Now</a> 
     </div> 
 </div>

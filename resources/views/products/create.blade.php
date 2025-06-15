@@ -31,7 +31,7 @@
                         </div>
                         <div class="card-body">
                             
-                            <!-- Category Selection -->
+                            <!-- Category selection -->
                             <div class="mb-3">
                                 <label for="category_id" class="form-label">{{ __('Category') }} <span class="text-danger">*</span></label>
                                 <select class="form-select @error('category_id') is-invalid @enderror" 
@@ -49,7 +49,7 @@
                                 @enderror
                             </div>
 
-                            <!-- Product Name -->
+                            <!-- Product name -->
                             <div class="mb-3">
                                 <label for="name" class="form-label">{{ __('Product Name') }} <span class="text-danger">*</span></label>
                                 <input type="text" 
@@ -98,7 +98,7 @@
                                 @enderror
                             </div>
 
-                            <!-- Sale Price (Optional) -->
+                            <!-- Sale price (optional) -->
                             <div class="mb-3">
                                 <label for="sale_price" class="form-label">{{ __('Sale Price (Optional)') }}</label>
                                 <div class="input-group">
@@ -117,7 +117,7 @@
                                 @enderror
                             </div>
 
-                            <!-- Photo Upload -->
+                            <!-- Photo -->
                             <div class="mb-3">
                                 <label for="photo" class="form-label">{{ __('Product Photo') }} <span class="text-danger">*</span></label>
                                 <input type="file" 
@@ -132,7 +132,7 @@
                                 @enderror
                             </div>
 
-                            <!-- Photo Preview -->
+                            <!-- Photo preview -->
                             <div class="mb-3">
                                 <img id="photo-preview" 
                                     src="#" 
@@ -141,7 +141,7 @@
                                     style="max-width: 200px; display: none;">
                             </div>
 
-                            <!-- Available Materials -->
+                            <!-- Available materials -->
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Available Materials') }} <span class="text-danger">*</span></label>
 
@@ -219,7 +219,7 @@
                                 @enderror
                             </div>
 
-                            <!-- Submit Buttons -->
+                            <!-- Submit buttons -->
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('products.index') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> {{ __('Back to Products') }}

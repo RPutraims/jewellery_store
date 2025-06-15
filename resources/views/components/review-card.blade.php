@@ -1,7 +1,7 @@
 <div class="card mb-3 shadow-sm rounded-lg">
     <div class="card-body">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
-            {{-- Left Side - Info --}}
+            {{-- Info --}}
             <div class="w-full md:w-1/5 pe-md-3 mb-3 mb-md-0">
 
                 @if ($review->title)
@@ -15,21 +15,21 @@
                 </div>
 
                 <div class="mb-1">
-                    <small class="text-muted">Product:</small><br>
+                    <small class="text-muted">{{ __('Product:') }}</small><br>
                     <a href="{{ route('products.show', $review->product->id) }}" class="fw-bold text-primary text-decoration-none hover:underline">
                         {{ $review->product->name }}
                     </a>
                 </div>
 
                 <div class="mb-1">
-                    <small class="text-muted">Reviewed by:</small><br>
+                    <small class="text-muted">{{ __('Reviewed by:') }}</small><br>
                     <span class="fw-semibold text-dark">{{ $review->user->name }}</span>
                 </div>
 
-                <small class="text-muted">Posted on {{ $review->created_at->format('M d, Y') }}</small>
+                <small class="text-muted">{{ __('Posted on') }} {{ $review->created_at->format('M d, Y') }}</small>
             </div>
 
-            {{-- Right Side - Photo --}}
+            {{-- Photo --}}
             @if ($review->photo)
                 <div class="w-full md:w-4/5 d-flex justify-content-center align-items-center p-1">
                     <img src="{{ asset('storage/' . $review->photo) }}"
@@ -40,7 +40,7 @@
             @endif
         </div>
 
-        {{-- Bottom Section - Review Text --}}
+        {{-- Review text --}}
         <hr class="my-3">
         <div class="mt-3">
             <p class="card-text text-break text-secondary">{{ $review->review_text }}</p>

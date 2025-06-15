@@ -13,11 +13,12 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: hidden; 
+            overflow: auto; 
         }
         #wrapper {
             display: flex; 
             min-height: 100vh; 
+            height: 100vh;
         }
         #sidebar-wrapper {           
             flex-shrink: 0;            
@@ -29,8 +30,7 @@
         }
         #page-content-wrapper {
             flex-grow: 1; 
-    
-            height: 100vh; 
+            max-height: 100vh; 
             overflow-y: auto; 
             padding: 1.5rem; 
         }

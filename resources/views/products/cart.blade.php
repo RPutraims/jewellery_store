@@ -9,6 +9,12 @@
             </div>
         @endif
 
+        @if(session('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                {{ session('error') }}
+            </div>
+        @endif
+
         @if(empty($cart))
             <div class="text-center py-16">
                 <i class="fas fa-shopping-cart text-gray-400 text-6xl mb-4"></i>
@@ -21,13 +27,13 @@
             </div>
         @else
             <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Cart Items -->
+                <!-- Cart -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
                         @foreach($cart as $cartKey => $item)
                             <div class="p-6 border-b border-gray-200 last:border-b-0">
                                 <div class="flex items-center space-x-4">
-                                    <!-- Product Image -->
+                                    <!-- Product image -->
                                     <div class="flex-shrink-0">
                                         @if($item['product_photo'])
                                             <img src="{{ asset('storage/' . $item['product_photo']) }}" 
@@ -40,7 +46,7 @@
                                         @endif
                                     </div>
 
-                                    <!-- Product Details -->
+                                    <!-- details -->
                                     <div class="flex-1">
                                         <h3 class="text-lg font-semibold text-gray-900">{{ $item['product_name'] }}</h3>
                                         
@@ -57,7 +63,7 @@
                                         </p>
                                     </div>
 
-                                    <!-- Quantity Controls -->
+                                    <!-- Quantity -->
                                     <div class="flex items-center space-x-2">
                                         <form action="{{ route('cart.update', $cartKey) }}" method="POST" class="inline">
                                             @csrf
@@ -83,7 +89,7 @@
                                         </form>
                                     </div>
 
-                                    <!-- Item Total -->
+                                    <!-- Total -->
                                     <div class="text-right">
                                         <p class="text-lg font-semibold text-gray-900">
                                             ${{ number_format($item['total'], 2) }}
@@ -102,7 +108,6 @@
                         @endforeach
                     </div>
 
-                    <!-- Continue Shopping -->
                     <div class="mt-6">
                         <a href="{{ route('products.index') }}" 
                         class="text-blue-600 hover:text-blue-800 font-medium">
@@ -111,7 +116,7 @@
                     </div>
                 </div>
 
-                <!-- Cart Summary -->
+                <!-- Cart -->
                 <div class="lg:col-span-1">
                     <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
                         <h2 class="text-xl font-semibold text-gray-900 mb-4">{{ __('Order Summary') }}</h2>
@@ -135,9 +140,15 @@
                             </div>
                         </div>
 
-                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium mt-6 hover:bg-blue-700 transition-colors">
-                            {{ __('Proceed to Checkout') }}
-                        </button>
+                        <form action="{{ route('checkout') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="amount" value="{{ number_format($totals['total'], 2, '.', '') }}">
+                            <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium mt-6 hover:bg-blue-700 transition-colors" type="submit">
+                                {{ __('Proceed to Checkout') }}
+                            </button>
+                        </form>
+
+
 
                         <form action="{{ route('cart.clear') }}" method="POST" class="mt-4">
                             @csrf
@@ -150,8 +161,30 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        @endif
+                @if($orders->count())
+                    <div class="mt-16">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ __('Your Orders') }}</h2>
+
+                        <div class="space-y-6">
+                            @foreach($orders as $order)
+                                <div class="bg-white shadow rounded-lg p-6 border">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                                        {{ __('Order #') }}{{ $order->id }} - {{ ucfirst($order->status) }}
+                                    </h3>
+                                    <ul class="text-gray-700 space-y-1">
+                                        <li><strong>{{ __('Total:') }}</strong> ${{ number_format($order->total, 2) }}</li>
+                                        <li><strong>{{ __('Payment Type:') }}</strong> {{ ucfirst($order->payment_type) }}</li>
+                                        <li><strong>{{ __('Delivery Method:') }}</strong> {{ ucfirst($order->delivery) }}</li>
+                                        <li><strong>{{ __('Address:') }}</strong> {{ $order->address }}</li>
+                                        <li><strong>{{ __('Ordered On:') }}</strong> {{ $order->created_at->format('F j, Y, g:i a') }}</li>
+                                    </ul>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            <@endif>
+        </div>
     </div>
 
 </x-layout>

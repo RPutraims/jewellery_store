@@ -52,7 +52,7 @@
 
                             <!-- Review title -->
                             <div class="mb-3">
-                                <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+                                <label for="title" class="form-label">{{ __('Title') }} <span class="text-danger">*</span></label>
                                 <input type="text" 
                                     class="form-control @error('name') is-invalid @enderror" 
                                     id="title" 
@@ -74,7 +74,7 @@
                                         rows="4">{{ old('review_text') }}</textarea>
                             </div>
 
-                            <!-- Photo Upload -->
+                            <!-- Photo -->
                             <div class="mb-3">
                                 <label for="photo" class="form-label">{{ __('Product Photo') }}</label>
                                 <input type="file" 
@@ -114,7 +114,7 @@
                                 @enderror
                             </div>
 
-                            <!-- Photo Preview -->
+                            <!-- Photo preview -->
                             <div class="mb-3">
                                 <img id="photo-preview" 
                                     src="#" 

@@ -5,7 +5,7 @@
         <h6 class="card-subtitle mb-2 text-muted">{{ $product->category->name }}</h6> 
         <p class="card-text">{{ $product->description }}</p> 
         <ul class="list-unstyled mb-3"> 
-            <li><strong>Price:</strong> 
+            <li><strong>{{ __('Price') }}:</strong> 
                 @if($product->sale_price)
                     <span class="text-decoration-line-through text-muted">${{ number_format($product->price, 2) }}</span>
                     <span class="text-danger fw-bold">${{ number_format($product->sale_price, 2) }}</span>
@@ -16,7 +16,12 @@
             <li><strong>{{ __('Category:') }}</strong> {{ $product->category->name }}</li> 
             <li><strong>{{ __('Added:') }}</strong> {{ $product->created_at?->format('Y-m-d') }}</li> 
         </ul> 
-        <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary">{{ __('Add To Cart') }}</a>
-        <a href="{{ route('products.show', ['product' => $product->id, 'action' => 'buy']) }}" class="btn btn-primary">{{ __('Buy Now') }}</a> 
+        @auth
+            <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary">{{ __('Add To Cart') }}</a>
+            <a href="{{ route('products.show', ['product' => $product->id, 'action' => 'buy']) }}" class="btn btn-primary">{{ __('Buy Now') }}</a>
+        @else
+            <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Add To Cart') }}</a>
+            <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Buy Now') }}</a>
+        @endauth
     </div> 
 </div>

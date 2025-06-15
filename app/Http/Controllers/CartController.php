@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\CartService;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -22,8 +23,14 @@ class CartController extends Controller
     {
         $cart = $this->cartService->get();
         $totals = $this->cartService->getTotals();
+        
+        $orders = collect();
 
-        return view('products.cart', compact('cart', 'totals'));
+        $orders = Order::where('user_id', auth()->id())
+                    ->latest()
+                    ->get();
+
+        return view('products.cart', compact('cart', 'totals', 'orders'));
     }
 
     /**

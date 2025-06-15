@@ -12,7 +12,7 @@
         @endif
 
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- Product Image -->
+            <!-- image -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 @if($product->photo)
                     <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" 
@@ -24,7 +24,7 @@
                 @endif
             </div>
 
-            <!-- Product Details -->
+            <!-- Details -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 <nav class="text-sm mb-4">
                     <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">{{ __('Home') }}</a>
@@ -132,7 +132,7 @@
                         </select>
                     </div>
 
-                    <!-- Add to Cart Button -->
+                    <!-- Add to cart button -->
                     <div class="flex space-x-4">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">

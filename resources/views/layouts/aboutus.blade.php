@@ -21,13 +21,6 @@
         </div>
     </div>
 
-    <div class="container">
-
-    </div>
-
-
-    @include('components.footer')
-
     <main class="container mt-4">
         @yield('content')
     </main>

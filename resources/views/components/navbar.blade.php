@@ -116,3 +116,13 @@
         @endcan
     @endauth
 
+<form action="{{ route('change.language') }}" method="POST" class="mt-2">
+    @csrf
+    <select name="language" onchange="this.form.submit()"
+        class="block bg-purple w-100 py-2 px-4 rounded-md border border-gold text-gold hover:bg-gold hover:text-purple transition duration-200 cursor-pointer">
+        <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+        <option value="lv" {{ app()->getLocale() == 'lv' ? 'selected' : '' }}>Latviešu</option>
+    </select>
+</form>
+
+

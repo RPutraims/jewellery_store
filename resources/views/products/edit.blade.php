@@ -1,9 +1,9 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">Products</h2>
+        <h2 class="text-3xl font-bold text-white">{{ __('Products') }}</h2>
     </x-slot>
 
-    <h1 class="mb-4">Edit Products</h1>
+    <h1 class="mb-4">{{ __('Edit products') }}</h1>
 
     <div class="container">
         <div class="row justify-content-center">

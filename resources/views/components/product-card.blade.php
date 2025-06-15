@@ -19,9 +19,21 @@
         @auth
             <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary">{{ __('Add To Cart') }}</a>
             <a href="{{ route('products.show', ['product' => $product->id, 'action' => 'buy']) }}" class="btn btn-primary">{{ __('Buy Now') }}</a>
+
+            @if(auth()->user()->role === 'admin') {{-- or use any other admin check you have --}}
+                <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="btn btn-primary">{{ __('Edit product') }}</a>
+
+                <form action="{{ route('products.delete', ['product' => $product->id]) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">{{ __('Delete product') }}</button>
+                </form>
+            @endif
         @else
             <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Add To Cart') }}</a>
             <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Buy Now') }}</a>
         @endauth
+
+
     </div> 
 </div>

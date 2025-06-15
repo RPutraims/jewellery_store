@@ -26,7 +26,7 @@ class CartController extends Controller
         
         $orders = collect();
 
-        $orders = Order::where('user_id')
+        $orders = Order::where('user_id', auth()->id())
                     ->latest()
                     ->get();
 

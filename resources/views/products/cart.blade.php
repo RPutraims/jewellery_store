@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="text-3xl font-bold text-white">{{ __('Shopping cart') }}</h2>
     </x-slot>
@@ -161,30 +161,30 @@
                         </form>
                     </div>
                 </div>
-                @if($orders->count())
-                    <div class="mt-16">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ __('Your Orders') }}</h2>
-
-                        <div class="space-y-6">
-                            @foreach($orders as $order)
-                                <div class="bg-white shadow rounded-lg p-6 border">
-                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                                        {{ __('Order #') }}{{ $order->id }} - {{ ucfirst($order->status) }}
-                                    </h3>
-                                    <ul class="text-gray-700 space-y-1">
-                                        <li><strong>{{ __('Total:') }}</strong> ${{ number_format($order->total, 2) }}</li>
-                                        <li><strong>{{ __('Payment Type:') }}</strong> {{ ucfirst($order->payment_type) }}</li>
-                                        <li><strong>{{ __('Delivery Method:') }}</strong> {{ ucfirst($order->delivery) }}</li>
-                                        <li><strong>{{ __('Address:') }}</strong> {{ $order->address }}</li>
-                                        <li><strong>{{ __('Ordered On:') }}</strong> {{ $order->created_at->format('F j, Y, g:i a') }}</li>
-                                    </ul>
-                                </div>
-                            @endforeach
+            </div>
+        <@endif>
+        @if($orders->count())
+            <div class="mt-16">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ __('Your Orders') }}</h2>
+                <div class="space-y-6">
+                    @foreach($orders as $order)
+                        <div class="bg-white shadow rounded-lg p-6 border">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                                {{ __('Order #') }}{{ $order->id }} - {{ ucfirst($order->status) }}
+                            </h3>
+                            <ul class="text-gray-700 space-y-1">
+                                <li><strong>{{ __('Total:') }}</strong> ${{ number_format($order->total, 2) }}</li>
+                                <li><strong>{{ __('Payment Type:') }}</strong> {{ ucfirst($order->payment_type) }}</li>
+                                <li><strong>{{ __('Delivery Method:') }}</strong> {{ ucfirst($order->delivery) }}</li>
+                                <li><strong>{{ __('Address:') }}</strong> {{ $order->address }}</li>
+                                <li><strong>{{ __('Ordered On:') }}</strong> {{ $order->created_at->format('F j, Y, g:i a') }}</li>
+                            </ul>
                         </div>
-                    </div>
-                @endif
-            <@endif>
+                    @endforeach
+                </div>
+            </div>
+        @endif
         </div>
     </div>
 
-</x-layout>
+</x-app-layout>

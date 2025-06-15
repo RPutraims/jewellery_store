@@ -37,6 +37,16 @@ class Product extends Model
         return $this->belongsToMany(Material::class, 'productmaterial', 'product_id', 'material_id');
     }
 
+    public function productMaterials()
+    {
+        return $this->hasMany(ProductMaterial::class);
+    }
+
+    public function productSizes()
+    {
+        return $this->hasMany(ProductSize::class);
+    }
+
     public function sizes()
     {
         return $this->belongsToMany(Size::class, 'productsize', 'product_id', 'size_id');

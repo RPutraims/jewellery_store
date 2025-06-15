@@ -52,8 +52,9 @@ Route::middleware(['web', SetLocale::class])->group(function () {
     Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count');//category/{categoryId}', [ProductController::class, 'byCategory'])->name('products.by-category');
 
     Route::get('/products/category/{id}', [ProductController::class, 'byCategory'])->name('products.byCategory');
-
     Route::resource('products', ProductController::class);
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
+
 
     //Payment routess
     Route::middleware('auth')->group(function () {

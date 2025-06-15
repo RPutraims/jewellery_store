@@ -114,6 +114,8 @@ class ProductController extends Controller
         $productmaterials = ProductMaterial::all();
         $materials = Material::get();
         $sizes = Size::get();
+
+        $product->load(['productMaterials', 'productSizes']);
         
         // Get currently selected materials and sizes for this product
         $selectedMaterials = $product->productMaterials->pluck('material_id')->toArray();
@@ -191,6 +193,20 @@ class ProductController extends Controller
         }
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
+    }
+
+    public function destroy(Product $product, Request $request)
+    {
+        if($request->user()->cannot('delete', $product)) {
+            abort(403, 'You are not allowed to edit this product');
+        }
+
+        $product->productMaterials()->delete();
+        $product->productSizes()->delete();
+
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 
 

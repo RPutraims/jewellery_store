@@ -3,8 +3,6 @@
         <h2 class="text-3xl font-bold text-white">{{ __('Products') }}</h2>
     </x-slot>
 
-    <h1 class="mb-4">{{ __('Edit products') }}</h1>
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -24,7 +22,7 @@
                                         <option value="">{{ __('Select Category') }}</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
-                                                {{ $category->name }}
+                                                {{ $category->category_name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -130,7 +128,7 @@
                                                     id="material_{{ $material->id }}"
                                                     {{ in_array($material->id, old('material_ids', $selectedMaterials)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="material_{{ $material->id }}">
-                                                    {{ $material->name }}
+                                                    {{ $material->material_name }}
                                                 </label>
                                             </div>
                                         @endforeach
@@ -159,7 +157,7 @@
                                                     id="size_{{ $size->id }}"
                                                     {{ in_array($size->id, old('size_ids', $selectedSizes)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="size_{{ $size->id }}">
-                                                    {{ $size->name }}
+                                                    {{ $size->size_value }}
                                                 </label>
                                             </div>
                                         @endforeach

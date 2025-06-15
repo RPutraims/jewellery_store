@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-white w-full h-full p-4 flex flex-col space-y-4 font-semibold text-xl leading-tight">
+        <h2 class="text-3xl font-bold text-white">
             {{ __('Welcome to HMJewellery') }}
         </h2>
     </x-slot>
@@ -8,13 +8,11 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <!-- Image at the top -->
             <div class="w-full h-[500px] overflow-hidden rounded-t-lg mb-8">
                 <img src="{{ asset('images/index_backg.webp') }}" alt="Store Background"
                      class="w-full h-full object-contain">
             </div>
 
-            <!-- Text content below the image -->
             <div class="p-8 text-center bg-white">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
                     {{ __('Welcome to Our Store!') }}

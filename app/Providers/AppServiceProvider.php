@@ -30,9 +30,5 @@ class AppServiceProvider extends ServiceProvider
 
         putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path(env('GOOGLE_APPLICATION_CREDENTIALS')));
 
-        View::composer('*', function ($view) {
-            $view->with('categories', Category::all());
-        });
-
     }
 }

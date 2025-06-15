@@ -44,12 +44,11 @@
 </head>
 <body class="font-sans antialiased">
     <div id="wrapper">
-        <!-- Sidebar - Navbar -->
+        
         <div id="sidebar-wrapper">
             @include('components.navbar')
         </div>
 
-        <!-- Page Content -->
         <div id="page-content-wrapper">
             @if (isset($header))
                 <header class="bg-purple shadow mb-4 rounded-lg p-4">
@@ -59,7 +58,6 @@
                 </header>
             @endif
 
-            <!-- Main Content -->
             <main class="container-fluid">
                 {{ $slot }}
             </main>

@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="text-3xl font-bold text-white">{{ __('Product page') }}</h2>
     </x-slot>
@@ -223,4 +223,4 @@
         });
     </script>
 
-</x-layout>
+</x-app-layout>

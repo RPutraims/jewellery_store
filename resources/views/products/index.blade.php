@@ -1,6 +1,8 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-white">{{ __('Products') }}</h2>
+        <h2 class="text-white w-full h-full p-4 flex flex-col space-y-4 font-bold text-3xl leading-tight">
+            {{ __('Products') }}
+        </h2>
     </x-slot>
 
     @if ($products->count())
